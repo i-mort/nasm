@@ -245,7 +245,7 @@ char *strsep(char **, const char *);
 size_t strnlen(const char *s, size_t maxlen);
 #endif
 
-#ifndef HAVE_MEMPCPY
+#if !defined(_WIN32) && !defined(_WIN64)
 static inline void *mempcpy(void *dst, const void *src, size_t n)
 {
     return (char *)memcpy(dst, src, n) + n;
